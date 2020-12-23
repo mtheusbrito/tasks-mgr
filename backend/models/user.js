@@ -8,7 +8,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      /*associações | falta implementar ainda*/
+    //  user.BelongsToMany(board)
+    //  board.BelongsToMany(user)
+    //  user.BelongsToMany(board, { foreignKey: 'board_id' })
+    //  board.BelongsToMany(user, { foreignKey: 'user_id' })
+    //  user.belongsTo(board, {foreignKey: 'board_id', targetKey: 'user_id'})
+    //  board.belongsTo(user, {foreignKey: 'user_id', targetKey: 'board_id'})
+    
+    //  underscored: true
     }
   };
   user.init({
@@ -22,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'user',
+    underscored: true
   });
   return user;
 };
