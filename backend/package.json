@@ -11,7 +11,8 @@
     "sucrase": "^3.16.0"
   },
   "scripts": {
-    "start": "node-dev server.js"
+    "start": "node-dev server.js",
+    "dev": " nodemon src/server.js"
   },
   "name": "backend",
   "version": "1.0.0",
