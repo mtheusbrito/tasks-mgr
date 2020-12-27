@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import routes from './routes';
+import './database';
 
 class App {
   constructor() {
@@ -19,6 +20,7 @@ class App {
   }
 
   routes() {
+    console.log('startou...', process.env.DIALECT);
     this.server.use(routes);
   }
 }
