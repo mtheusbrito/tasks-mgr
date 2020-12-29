@@ -1,8 +1,10 @@
 import Sequelize from 'sequelize';
 import User from '../app/models/User';
+import Team from '../app/models/Team';
+import UserTeam from '../app/models/UserTeam';
 import databaseConfig from '../config/database';
 
-const models = [User];
+const models = [User, Team, UserTeam];
 class Database {
   constructor() {
     this.init();
