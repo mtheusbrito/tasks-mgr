@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+
 import Team from '../models/Team';
 
 class TeamController {
