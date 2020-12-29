@@ -20,7 +20,6 @@ class App {
   }
 
   routes() {
-    console.log('startou...', process.env.DIALECT);
     this.server.use(routes);
   }
 }
