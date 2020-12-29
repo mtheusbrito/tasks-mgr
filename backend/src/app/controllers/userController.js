@@ -1,4 +1,4 @@
-import Yup from 'yup';
+import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
@@ -13,6 +13,7 @@ class UserController {
       email: Yup.string().email().required(),
       password: Yup.string().required().min(6),
     });
+
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Erro na validação de campos!' });
     }
@@ -54,6 +55,7 @@ class UserController {
       const user_exist = await User.findOne({
         where: { email },
       });
+
       if (user_exist) {
         return res
           .status(400)

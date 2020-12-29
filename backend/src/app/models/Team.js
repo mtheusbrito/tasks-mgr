@@ -5,7 +5,6 @@ class Team extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        admin_id: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -20,6 +19,10 @@ class Team extends Model {
       through: 'UserTeam',
       foreignKey: 'team_id',
       as: 'members',
+    });
+    this.belongsTo(models.User, {
+      foreignKey: 'admin_id',
+      as: 'admin',
     });
   }
 }
