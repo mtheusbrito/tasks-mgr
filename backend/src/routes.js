@@ -3,6 +3,7 @@ import UserController from './app/controllers/UserController';
 import TeamController from './app/controllers/TeamController';
 import SessionController from './app/controllers/SessionController';
 
+import TeamUserController from './app/controllers/TeamUserController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -20,8 +21,11 @@ routes.post('/teams', TeamController.store);
 
 routes.use(authMiddleware);
 routes.put('/users', UserController.update);
+
 routes.get('/teams', TeamController.index);
 routes.put('/teams/:teamId', TeamController.update);
 routes.delete('/teams/:teamId', TeamController.destroy);
+
+routes.post('/teams/:teamId/users/:userId', TeamUserController.store);
 
 export default routes;
