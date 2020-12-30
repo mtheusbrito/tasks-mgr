@@ -17,7 +17,7 @@ class UserController {
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Erro na validação de campos!' });
     }
-    const user_exist = User.findOne({ where: { email: req.body.email } });
+    const user_exist = await User.findOne({ where: { email: req.body.email } });
 
     if (user_exist) {
       return res

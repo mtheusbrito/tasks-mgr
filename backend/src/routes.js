@@ -15,8 +15,6 @@ routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
-routes.put('/users', UserController.update);
-
 routes.get('/teams', TeamController.index);
 routes.post('/teams', TeamController.store);
 
