@@ -50,7 +50,7 @@ class TeamController {
       return res.status(400).json({ error: 'Erro na validação de campos!' });
     }
 
-    const team = await Team.findOne({ where: { id: req.params.id } });
+    const team = await Team.findOne({ where: { id: req.params.teamId } });
     if (!team) {
       return res.status(400).json('Equipe não encontrada!');
     }
@@ -59,6 +59,18 @@ class TeamController {
     }
     const { id, name } = await team.update(req.body);
     return res.json({ id, name });
+  }
+
+  async destroy(req, res) {
+    const team = await Team.findOne({ where: { id: req.params.teamId } });
+    if (!team) {
+      return res.status(400).json('Equipe não encontrada!');
+    }
+    if (team.admin_id !== req.userId) {
+      return res.status(401).json('Operação não permitida!');
+    }
+    await team.destroy();
+    return res.status(204).send();
   }
 }
 export default new TeamController();
