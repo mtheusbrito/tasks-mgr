@@ -1,10 +1,22 @@
 import * as Yup from 'yup';
 
 import Team from '../models/Team';
+import User from '../models/User';
 
 class TeamController {
   async index(req, res) {
-    const teams = await Team.findAll();
+    const teams = await Team.findAll({
+      attributes: ['name'],
+      include: [
+        { model: User, attributes: ['id', 'name', 'email'], as: 'admin' },
+        {
+          model: User,
+          attributes: ['id', 'name', 'email'],
+          through: { attributes: [] },
+          as: 'members',
+        },
+      ],
+    });
     return res.json({ teams });
   }
 
