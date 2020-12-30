@@ -21,5 +21,6 @@ routes.post('/teams', TeamController.store);
 routes.use(authMiddleware);
 routes.put('/users', UserController.update);
 routes.get('/teams', TeamController.index);
+routes.put('/teams/:id', TeamController.update);
 
 export default routes;
