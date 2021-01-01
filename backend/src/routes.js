@@ -27,5 +27,5 @@ routes.put('/teams/:teamId', TeamController.update);
 routes.delete('/teams/:teamId', TeamController.destroy);
 
 routes.post('/teams/:teamId/users/:userId', TeamUserController.store);
-
+routes.delete('/teams/:teamId/users/:userId', TeamUserController.destroy);
 export default routes;
