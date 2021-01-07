@@ -4,25 +4,35 @@ import PropTypes from 'prop-types';
 import AuthLayout from '../pages/layouts/auth';
 import DefaultLayout from '../pages/layouts/default';
 
+import DashboardLayout from '../pages/layouts/adm/DashboardLayout';
+import MainLayout from '../pages/layouts/adm/MainLayout';
+
 export default function RouteWrapper({
   component: Component,
   isPrivate,
+  isAdmin,
   ...rest
 }) {
   const signed = false;
+
+  let Layout = DefaultLayout;
+  window.console.log(isPrivate);
+  if (isAdmin) {
+    Layout = signed ? DashboardLayout : MainLayout;
+  } else {
+    Layout = signed ? DefaultLayout : AuthLayout;
+  }
   if (!signed && isPrivate) {
-    return <Redirect to='/login' />;
+    return isAdmin ? <Redirect to='/adm/login' /> : <Redirect to='/login' />;
   }
   if (signed && !isPrivate) {
-    return <Redirect to='/' />;
+    return isAdmin ? <Redirect to='/adm' /> : <Redirect to='/' />;
   }
-  const Layout = signed ? DefaultLayout : AuthLayout;
-
+  /* eslint-disable react/jsx-props-no-spreading */
   return (
-    /* eslint-disable react/jsx-props-no-spreading */
     <Route
       {...rest}
-      render={(props) => (
+      component={(props) => (
         <Layout>
           <Component {...props} />
         </Layout>
@@ -32,7 +42,11 @@ export default function RouteWrapper({
 }
 RouteWrapper.propTypes = {
   isPrivate: PropTypes.bool,
+  isAdmin: PropTypes.bool,
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
     .isRequired,
 };
-RouteWrapper.defaultProps = { isPrivate: false };
+RouteWrapper.defaultProps = {
+  isPrivate: false,
+  isAdmin: false,
+};
