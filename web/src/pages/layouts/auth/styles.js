@@ -35,6 +35,9 @@ export const Content = styled.div`
       color: rgba(255, 255, 255, 0.7);
     }
   }
+  span {
+    color: #f64c75;
+  }
   button {
     height: 44px;
     background: rgb(58, 177, 155);
