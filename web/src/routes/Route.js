@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import AuthLayout from '../pages/layouts/auth';
 import DefaultLayout from '../pages/layouts/default';
 
-import DashboardLayout from '../pages/layouts/adm/DashboardLayout';
-import MainLayout from '../pages/layouts/adm/MainLayout';
+import DashboardLayout from '../pages/layouts/adm/dashboardLayout';
+import MainLayout from '../pages/layouts/adm/mainLayout';
 
 export default function RouteWrapper({
   component: Component,
