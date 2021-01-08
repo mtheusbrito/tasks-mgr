@@ -42,10 +42,10 @@ const Login = () => (
           }) => (
             <form onSubmit={handleSubmit}>
               <Box mb={3}>
-                <Typography color='textPrimary' variant='h2'>
+                <Typography color='primary' variant='h2'>
                   Acessar
                 </Typography>
-                <Typography color='textSecundary' variant='body2'>
+                <Typography variant='body2'>
                   Insira suas credeciais abaixo para acessar o sistema
                 </Typography>
               </Box>

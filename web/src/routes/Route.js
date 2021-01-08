@@ -16,7 +16,6 @@ export default function RouteWrapper({
   const signed = false;
 
   let Layout = DefaultLayout;
-  window.console.log(isPrivate);
   if (isAdmin) {
     Layout = signed ? DashboardLayout : MainLayout;
   } else {
@@ -32,7 +31,7 @@ export default function RouteWrapper({
   return (
     <Route
       {...rest}
-      component={(props) => (
+      render={(props) => (
         <Layout>
           <Component {...props} />
         </Layout>
