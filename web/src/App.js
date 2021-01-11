@@ -1,21 +1,25 @@
 import React from 'react';
 import { ThemeProvider } from '@material-ui/core';
 import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import theme from './theme';
-
 import Routes from './routes';
 import { history } from './services/history';
 import './config/ReactotronConfig';
 import GlobalStyle from './styles/global';
 
+import store from './store';
+
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Router history={history}>
-        <Routes />
-        <GlobalStyle />
-      </Router>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Router history={history}>
+          <Routes />
+          <GlobalStyle />
+        </Router>
+      </ThemeProvider>
+    </Provider>
   );
 }
 export default App;
