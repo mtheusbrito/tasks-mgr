@@ -6,7 +6,7 @@ import Logo from '../../components/Logo';
 // import { Container } from './styles';
 const schema = Yup.object().shape({
   email: Yup.string().email('Insira um e-mail válido').required(),
-  password: Yup.string().required(),
+  password: Yup.string().required('A senha é obrigatória'),
 });
 function SignIn() {
   function handleSubmit(data) {
