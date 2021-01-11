@@ -7,14 +7,16 @@ import DefaultLayout from '../pages/layouts/default';
 import DashboardLayout from '../pages/layouts/adm/dashboardLayout';
 import MainLayout from '../pages/layouts/adm/mainLayout';
 
+import store from '../store';
+
 export default function RouteWrapper({
   component: Component,
   isPrivate,
   isAdmin,
   ...rest
 }) {
-  const signed = false;
-
+  const { signed } = store.getState().auth.signed;
+  window.console.log(signed);
   let Layout = DefaultLayout;
   if (isAdmin) {
     Layout = signed ? DashboardLayout : MainLayout;
