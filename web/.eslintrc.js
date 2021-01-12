@@ -1,9 +1,9 @@
 module.exports = {
+  parser: 'babel-eslint',
   env: {
     es6: true,
     jest: true,
     browser: true,
-    // es2021: true,
   },
   extends: ['airbnb', 'prettier', 'prettier/react'],
   globals: {
@@ -21,8 +21,10 @@ module.exports = {
   plugins: ['react', 'jsx-a11y', 'import', 'react-hooks', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
     'import/prefer-default-export': 'off',
+    'no-console': ['error', { allow: ['tron'] }],
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'react/jsx-one-expression-per-line': 'off',
     'global-require': 'off',
@@ -30,14 +32,16 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-underscore-dangle': 'off',
     camelcase: 'off',
-    'no-console': ['error', { allow: ['tron'] }],
+    // 'no-console': ['error', { allow: ['tron'] }],
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    // 'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
+    'react-hooks/exhaustive-deps': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
   },
   settings: {
     'import/resolver': {
-      'babel-plugin-root-import': { rootPathSuffix: 'src' },
+      'babel-plugin-root-import': {
+        rootPathSuffix: 'src',
+      },
     },
   },
 };
