@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import avatarsMiddleware from 'adorable-avatars';
 import UserController from './app/controllers/UserController';
 import TeamController from './app/controllers/TeamController';
 import SessionController from './app/controllers/SessionController';
@@ -13,7 +14,7 @@ const routes = new Router();
 routes.get('/', (req, res) => res.json({ message: 'Hello my friend!' }));
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
-
+routes.use('/myAvatar', avatarsMiddleware);
 routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
