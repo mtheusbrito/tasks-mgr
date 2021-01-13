@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Container, Content, Profile } from './styles';
 import Logo from '../Logo';
+import Notification from '../Notifications';
 
 function Header() {
   return (
@@ -11,6 +12,7 @@ function Header() {
           <Link to='/dashboard'>DASHBOARD</Link>
         </nav>
         <aside>
+          <Notification />
           <Profile>
             <div>
               <strong>Matheus</strong>
