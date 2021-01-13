@@ -18,8 +18,8 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.loading = false;
         break;
       }
-      case '@auth/SIGN_FAILURE': {
-        draft.loading = true;
+      case '@auth/SIGN_FAILURE' || '@auth/SIGN_UP_REQUEST': {
+        draft.loading = false;
         break;
       }
       default:

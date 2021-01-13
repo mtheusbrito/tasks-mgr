@@ -1,7 +1,7 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import api from '../../../services/api';
-import { signInSuccess, siginFailure } from './actions';
+import { signInSuccess, signFailure } from './actions';
 import history from '../../../services/history';
 
 export function* signIn({ payload }) {
@@ -18,8 +18,33 @@ export function* signIn({ payload }) {
   } catch (err) {
     window.console.log(`error: ${err}`);
     toast.error('Falha na autenticão, verifique seus dados!');
-    yield put(siginFailure());
+    yield put(signFailure());
+  }
+}
+export function* signUp({ payload }) {
+  try {
+    const { email, name, password } = payload;
+    const response = yield call(api.post, 'users', {
+      name,
+      email,
+      password,
+    });
+    const { error } = response.data;
+    if (error) {
+      toast.error(error);
+    } else {
+      history.push('/login');
+      toast.success(
+        'Conta criada, informe suas credeciais para acessar sua conta.'
+      );
+    }
+  } catch (err) {
+    toast.error('Falha, verfique seus dados!');
+    yield put(signFailure());
   }
 }
 
-export default all([takeLatest('@auth/SIGN_IN_REQUEST', signIn)]);
+export default all([
+  takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+  takeLatest('@auth/SIGN_UP_REQUEST', signUp),
+]);
