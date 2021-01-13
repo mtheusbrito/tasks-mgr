@@ -6,7 +6,7 @@ import DefaultLayout from '../pages/layouts/default';
 import DashboardLayout from '../pages/layouts/adm/dashboardLayout';
 import MainLayout from '../pages/layouts/adm/mainLayout';
 
-import store from '../store';
+import { store } from '../store';
 
 export default function RouteWrapper({
   component: Component,
