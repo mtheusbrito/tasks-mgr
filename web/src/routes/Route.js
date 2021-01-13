@@ -15,7 +15,7 @@ export default function RouteWrapper({
   isAdmin,
   ...rest
 }) {
-  const { signed } = store.getState().auth.signed;
+  const { signed } = store.getState().auth;
   window.console.log(signed);
   let Layout = DefaultLayout;
   if (isAdmin) {
