@@ -1,4 +1,3 @@
-import React from 'react';
 import './config/ReactotronConfig';
 import { ThemeProvider } from '@material-ui/core';
 import { Router } from 'react-router-dom';
